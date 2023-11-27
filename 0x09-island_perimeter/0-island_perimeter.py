@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-"""
-Island Perimeter:
-    returns the perimeter of the island described in grid
-"""
-
+""" The function returns the perimeter of the island described in grid"""
 
 def island_perimeter(grid):
     """island perimenter function"""
