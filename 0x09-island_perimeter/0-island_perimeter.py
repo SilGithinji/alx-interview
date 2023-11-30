@@ -1,15 +1,34 @@
 #!/usr/bin/python3
-""" The function returns the perimeter of the island described in grid"""
+"""Return the perimeter of the island described in grid"""
+
 
 def island_perimeter(grid):
-    """island perimenter function"""
+    """To see if grid is empty"""
+    if not grid:
+        return 0
+
+    # Get the dimensions of the grid
+    rows, cols = len(grid), len(grid[0])
+
+    # Initialize the perimeter to zero
     perimeter = 0
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
+
+    # Loop over all cells in the grid
+    for i in range(rows):
+        for j in range(cols):
+            # Check if the current cell is land
             if grid[i][j] == 1:
-                perimeter += 4
-                if i > 0 and grid[i-1][j] == 1:
-                    perimeter -= 2
-                if j > 0 and grid[i][j-1] == 1:
-                    perimeter -= 2
+                # Check if the cell to the left is water or out of bounds
+                if j == 0 or grid[i][j-1] == 0:
+                    perimeter += 1
+                # Check if the cell to the right is water or out of bounds
+                if j == cols-1 or grid[i][j+1] == 0:
+                    perimeter += 1
+                # Check if the cell above is water or out of bounds
+                if i == 0 or grid[i-1][j] == 0:
+                    perimeter += 1
+                # Check if the cell below is water or out of bounds
+                if i == rows-1 or grid[i+1][j] == 0:
+                    perimeter += 1
+
     return perimeter
